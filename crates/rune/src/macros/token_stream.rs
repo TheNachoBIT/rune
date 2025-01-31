@@ -42,10 +42,15 @@ impl TokenStream {
     }
 
     /// Create an iterator over the token stream.
-    pub(crate) fn iter(&self) -> TokenStreamIter<'_> {
+    pub fn iter(&self) -> TokenStreamIter<'_> {
         TokenStreamIter {
             iter: self.stream.iter(),
         }
+    }
+
+    /// Get the reference of the token stream in form of a Vec.
+    pub fn vec(&self) -> &Vec<ast::Token> {
+        &self.stream
     }
 
     /// Return something that once formatted will produce a stream of kinds.
